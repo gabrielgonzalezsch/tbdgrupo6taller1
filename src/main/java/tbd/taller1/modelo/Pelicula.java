@@ -1,12 +1,13 @@
 package tbd.taller1.modelo;
 
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Entity
+@Table(name = "film")
 public class Pelicula {
 
    @Id
@@ -16,6 +17,7 @@ public class Pelicula {
     @Column(name="title", nullable=false, length=45)
     private String title;
 
+    @ElementCollection
     List<Actor> actores;
 
     public Pelicula() {

@@ -20,7 +20,7 @@ public class PeliculaServicio {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public  Pelicula findOne(@PathVariable("id") Integer id) { return this.peliculaRepositorio.findPeliculaByPeliculaId(id);
+    public  Pelicula findOne(@PathVariable("id") Integer id) { return this.peliculaRepositorio.findFilmByFilmId(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
