@@ -6,3 +6,4 @@ import tbd.taller1.modelo.Actor;
 public interface ActorRepositorio extends PagingAndSortingRepository<Actor, Integer> {
     Actor findActorByActorId(Integer id);
 }
+

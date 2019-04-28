@@ -27,17 +27,14 @@ const app = new Vue ({
                 params: {
                     'per_page': this.cantidadResultados
                 }
-            }).then(response => {
+            }).then(response => {console.log(response.data)
                 this.usuarios = response.data.data
             }).catch(e => {
                 console.log(e)
             })
-        }, mounted() {
-            axios
-                .get('http://localhost:8081/actors')
-                .then(response => (this.info = response))
-        }
+        } 
 
     },
 
 })
+

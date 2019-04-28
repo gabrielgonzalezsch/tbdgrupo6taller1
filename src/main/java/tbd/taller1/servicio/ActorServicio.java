@@ -8,6 +8,7 @@ import tbd.taller1.repositorio.ActorRepositorio;
 
 @RestController
 @RequestMapping("/actors")
+@CrossOrigin(origins = "*")
 public class ActorServicio {
 
     @Autowired
