@@ -1,9 +1,12 @@
 const app = new Vue ({
     el: "#app",
     data: {
-        titulo: 'App',
+        titulo: 'App prueba',
         actividades:[],
-        porAgregar: ''
+        porAgregar: '',
+        usuarios: [],
+        cantidadResultados: 5 ,
+        info: null
     },
     methods: {
         agregarActividad(){
@@ -18,7 +21,23 @@ const app = new Vue ({
         },
         eliminarActividad(index){
             this.actividades.splice(index,1);
+        },
+        leerAPI() {
+            axios.get('http://localhost:8081/actors', {
+                params: {
+                    'per_page': this.cantidadResultados
+                }
+            }).then(response => {
+                this.usuarios = response.data.data
+            }).catch(e => {
+                console.log(e)
+            })
+        }, mounted() {
+            axios
+                .get('http://localhost:8081/actors')
+                .then(response => (this.info = response))
         }
 
-    }
+    },
+
 })
