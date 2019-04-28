@@ -3,6 +3,8 @@ package tbd.taller1.modelo;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="actor")
@@ -23,7 +25,13 @@ public class Actor implements Serializable {
     @Column(name="last_update", nullable=false)
     private Timestamp lastUpdate;
 
+    @ManyToMany
+    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id"), inverseJoinColumns = @JoinColumn(name = "film_id"))
+    List<Pelicula> peliculas;
+
+
     public Actor() {
+        peliculas = new ArrayList<>();
     }
 
     public int getActorId() {
@@ -58,4 +66,11 @@ public class Actor implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
+    public List<Pelicula> getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(List<Pelicula> peliculas) {
+        this.peliculas = peliculas;
+    }
 }

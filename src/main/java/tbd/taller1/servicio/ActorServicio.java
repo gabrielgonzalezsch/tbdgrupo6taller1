@@ -3,8 +3,9 @@ package tbd.taller1.servicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import tbd.taller1.modelo.Actor;
+import tbd.taller1.modelo.*;
 import tbd.taller1.repositorio.ActorRepositorio;
+import tbd.taller1.repositorio.PeliculaRepositorio;
 
 @RestController
 @RequestMapping("/actors")
@@ -13,6 +14,9 @@ public class ActorServicio {
 
     @Autowired
     private ActorRepositorio actorRepository;
+
+    @Autowired
+    private PeliculaRepositorio peliculaRepositorio;
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
@@ -30,6 +34,14 @@ public class ActorServicio {
     @ResponseBody
     public Actor create(@RequestBody Actor resource) {
         return actorRepository.save(resource);
+    }
+
+    @RequestMapping(value = "/{id}/films",method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Pelicula> peliculasActor(@PathVariable("id") Integer id) {
+        Actor actor = actorRepository.findActorByActorId(id);
+        return actor.getPeliculas();
+
     }
 
 }

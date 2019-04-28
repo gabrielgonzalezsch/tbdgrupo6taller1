@@ -18,10 +18,11 @@ public class Pelicula {
     private String title;
 
     @ElementCollection
-    List<Actor> actores;
+    @ManyToMany(mappedBy = "peliculas")
+    List<Actor> actor;
 
     public Pelicula() {
-        actores = new ArrayList<Actor>();
+        actor = new ArrayList<Actor>();
     }
 
     public int getFilmId() {
