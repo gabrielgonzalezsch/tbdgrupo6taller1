@@ -29,7 +29,7 @@ public class ActorServicio {
     public  Actor findOne(@PathVariable("id") Integer id) { return this.actorRepository.findActorByActorId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Actor create(@RequestBody Actor resource) {

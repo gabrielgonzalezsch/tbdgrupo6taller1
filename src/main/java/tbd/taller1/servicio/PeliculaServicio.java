@@ -7,7 +7,7 @@ import tbd.taller1.modelo.Pelicula;
 import tbd.taller1.repositorio.PeliculaRepositorio;
 
 @RestController
-@RequestMapping("/peliculas")
+@RequestMapping("/films")
 public class PeliculaServicio {
     @Autowired
     private PeliculaRepositorio peliculaRepositorio;
