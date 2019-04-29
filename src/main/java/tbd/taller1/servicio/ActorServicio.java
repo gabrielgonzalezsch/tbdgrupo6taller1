@@ -7,6 +7,8 @@ import tbd.taller1.modelo.*;
 import tbd.taller1.repositorio.ActorRepositorio;
 import tbd.taller1.repositorio.PeliculaRepositorio;
 
+import java.sql.Timestamp;
+
 @RestController
 @RequestMapping("/actors")
 @CrossOrigin(origins = "*")
@@ -33,6 +35,8 @@ public class ActorServicio {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Actor create(@RequestBody Actor resource) {
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        resource.setLastUpdate(time);
         return actorRepository.save(resource);
     }
 
