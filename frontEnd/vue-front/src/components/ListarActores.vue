@@ -4,10 +4,16 @@
             <ul class="list-group list-group-flush">
                 <li v-for="(item,index) of actores" :key="item.id"
                 class="list-group-item">
-                    {{item.firstName}} {{item.lastName}}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#actor-'+index">
-                    Mostrar Peliculas
-                    </button>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            {{item.firstName}} {{item.lastName}}
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" :data-target="'#actor-'+index">
+                            Mostrar Peliculas
+                            </button>
+                        </div>
+                    </div>
                     <div class="modal fade" :id="'actor-'+index" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -18,14 +24,17 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <li v-for="pelicula of item.peliculas" :key="pelicula.id"
-                            class="list-group-item">
-                                {{ pelicula.title }}
-                            </li>
+                            <div class="card">
+                                <div class="card-body scrollable">
+                                    <li v-for="pelicula of item.peliculas" :key="pelicula.id"
+                                    class="list-group-item">
+                                        {{ pelicula.title }}
+                                    </li>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                         </div>
                     </div>
