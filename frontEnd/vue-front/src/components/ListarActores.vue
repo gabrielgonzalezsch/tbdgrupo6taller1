@@ -10,7 +10,7 @@
                         </div>
                         <div>
                             <button type="button" class="btn btn-warning" data-toggle="modal" :data-target="'#actor-'+index">
-                            Mostrar Peliculas
+                            Mostrar Películas
                             </button>
                         </div>
                     </div>
