@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     actores:[],
     firstName: '',
-    lastName: ''
+    lastName: '',
+    axios: ''
   },
   mutations: {
     llenarActores(state, actores) {

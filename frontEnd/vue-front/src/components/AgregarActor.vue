@@ -3,17 +3,15 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="input1">Nombre</label>
-                            <input type="text" class="form-control" id="input1" placeholder="Ingrese nombre del actor">
-                        </div>
-                        <div class="form-group">
-                            <label for="input2">Apellido</label>
-                            <input type="text" class="form-control" id="input2" placeholder="Ingrese apellido del actor">
-                        </div> 
-                        <button type="submit" class="btn btn-success btn-block">Agregar</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="input1">Nombre</label>
+                        <input type="text" class="form-control" id="input1" placeholder="Ingrese nombre del actor" v-model="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="input2">Apellido</label>
+                        <input type="text" class="form-control" id="input2" placeholder="Ingrese apellido del actor" v-model="lastName">
+                    </div> 
+                    <button @click.prevent="agregarActores()" class="btn btn-success btn-block">Agregar</button>
                 </div>
             </div>
         </div>
@@ -26,14 +24,27 @@ import {mapState,mapActions} from 'vuex';
 
 export default {
     name: 'AgregarActor',
+    data() {
+        return {
+            firstName: '',
+            lastName: '',
+        }
+    },
     computed: {
-        ...mapState(['actores','firstName','lastName']),
     },
     methods: {
-        ...mapActions(['obtenerActores'])
+        agregarActores() {
+            this.$axios.post("/actors/new",{
+                firstName: this.firstName,
+                lastName: this.lastName,
+            }).then((response) => {
+                console.log(response.data);
+                this.firstName = '';
+                this.lastName = '';
+            });
+        },
     },
     created() {
-        this.obtenerActores();
     }
 
 }
